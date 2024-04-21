@@ -1,35 +1,33 @@
-let option = prompt("¿Desea crear un correo electronico? (si/no)").toLowerCase()
+let Users = [];
+let option = prompt("¿Desea crear un correo electrónico? (si/no)").toLowerCase();
 
-while(option == "si"){
+while(option === "si") {
+    let nameComplete = prompt("Ingrese su primer nombre y primer apellido: ").toLowerCase();
+    let array = nameComplete.split(" ");
 
-    let nameComlete = prompt("Ingrese su primer nombre y primer apellido: ").toLowerCase();
-
-let array = nameComlete.split(" ");
-
-    while(array.length > 2){
-        alert("El nombre ingresado tiene más de 2 palabras")
-
-        array = prompt("Ingrese por favor primer nombre y primer apellido: ").toLowerCase();
-        break
+    while(array.length !== 2) {
+        alert("El nombre ingresado debe tener exactamente 2 palabras.");
+        nameComplete = prompt("Ingrese por favor primer nombre y primer apellido: ").toLowerCase();
+        array = nameComplete.split(" ");
     }
 
-alert("Los datos ingresados son: "+"["+array+"]")
+    alert("Los datos ingresados son: " + "[" + array + "]");
 
-let lettersName = array[0].slice(0,3)
+    let lettersName = array[0].slice(0, 3);
+    let lettersLastName = array[1].slice(0, 3);
+    let email = lettersName + lettersLastName;
+    let count = 1;
+    let lastEmail = email;
 
-let lettersLastname = array[1].slice(0,3)
+    while(Users.includes(email)) {
+        email = lastEmail + count;
+        count++;
+    }
 
-alert("Su correo electronico es: "+lettersName+lettersLastname+"@myDomain.com")
+    Users.push(email);
+    alert("Su correo electrónico es: " + email + "@myDomain.com");
 
-option = prompt("Desea crear otro correo electronico: (si/no)").toLowerCase()
+    option = prompt("¿Desea crear otro correo electrónico? (si/no)").toLowerCase();
 }
 
-let listEmail = [];
-
-let Username = lettersName + lettersLastname; //usuario = key {username : correo}
-let email = lettersName+lettersLastname+"@myDomain.com"; //correo = contenido
-
-let obj = Object.keys(listEmail);
-if (obj.includes(Username)){
-    alert("Ya existe un correo electronico registrado con este usuario");
-}
+console.log(Users);
