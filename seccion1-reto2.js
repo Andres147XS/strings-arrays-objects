@@ -1,11 +1,11 @@
+let password = prompt("Ingrese una contraseña:");
 
+function pass(a) {
+    return /[A-Za-z0-9!@#$%^&*()+=_-{}[\]:;"'?<>,.|\/\\~`].{8,}/.test(a);
+}
 
-let password = prompt("Ingrese una contraseña:")
-
-if (password.length < 8) {
-    alert("Debe tener minimo 8 caracteres")
-}else{
-    if(password.includes(Number) && password.includes(String) && password.includes(" ! @ # $ % ^ & *")){
-        alert("Contraseña segura")
-    }
+if (pass(password)) {
+    console.log("La contraseña es válida.");
+} else {
+    console.log("La contraseña no cumple con los requisitos.");
 }
