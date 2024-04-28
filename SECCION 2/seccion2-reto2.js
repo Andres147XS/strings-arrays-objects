@@ -14,24 +14,27 @@ Crear un script que calcule estadísticas de calificaciones de un grupo de estud
     Muestra las estadísticas de calificaciones al usuario.
 */
 
-let marks = prompt("Ingrese las calificaciones del estudiante separadas por comas")
+let marks = prompt("Ingrese las calificaciones del estudiante separadas por comas");
 
-let arrayMarks = marks.split(",")
-console.log(arrayMarks)
+let arrayMarks = marks.split(",");
+console.log(arrayMarks);
 
-let sum = 0
+let sum = 0;
 
-for (let i = 0; i < arrayMarks.length; i++){
-    sum = sum + Number(arrayMarks[i])
+for (let i = 0; i < arrayMarks.length; i++) {
+    sum = sum + Number(arrayMarks[i]);
 }
-let average = (sum/arrayMarks.length)
-let maxValue = Math.max(...arrayMarks)
-let minValue = Math.min(...arrayMarks)
+let average = sum / arrayMarks.length;
+let maxValue = Math.max(...arrayMarks);
+let minValue = Math.min(...arrayMarks);
 
+let aprovates = arrayMarks.filter(mark => mark >= 70).length;
+let reprobates = arrayMarks.filter(mark => mark < 70).length;
+let sortedMarks = arrayMarks.sort((a, b) => b - a);
 
-console.log("El promedio de las calificaciones es: "+average)
-console.log("La calificacion maxima es: "+maxValue)
-console.log("La calificacion minima es: "+minValue)
-console.log("El numero de aprobados es: ")
-console.log("El numero de reprobados es: ")
-console.log("Las calificaciones ordenadas de mayor a menor son: ")
+console.log("El promedio de las calificaciones es: " + average);
+console.log("La calificación máxima es: " + maxValue);
+console.log("La calificación mínima es: " + minValue);
+console.log("El número de aprobados es: " + aprovates);
+console.log("El número de reprobados es: " + reprobates);
+console.log("Las calificaciones ordenadas de mayor a menor son: " + sortedMarks);
